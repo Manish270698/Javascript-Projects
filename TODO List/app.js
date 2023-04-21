@@ -49,8 +49,8 @@ add.addEventListener('click', submit);
 
 clearAll = document.querySelector('.clearAll');
 clearAll.addEventListener('click', function () {
-    if(localStorage.getItem('itemsJSON') == null){
-        alert ("The list is already empty");
+    if (localStorage.getItem('itemsJSON') == null) {
+        alert("The list is already empty");
     }
     else if (confirm('Do you really want to clear the list?')) {
         clearStore();
@@ -59,8 +59,13 @@ clearAll.addEventListener('click', function () {
 
 function deleteMe(index) {
     arr.splice(index, 1);
-    localStorage.setItem('itemsJSON', JSON.stringify(arr));
-    update();
+    if (arr.length === 0) {
+        clearStore();
+    }
+    else {
+        localStorage.setItem('itemsJSON', JSON.stringify(arr));
+        update();
+    }
 }
 
 window.onload = update();
