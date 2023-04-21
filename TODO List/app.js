@@ -49,7 +49,10 @@ add.addEventListener('click', submit);
 
 clearAll = document.querySelector('.clearAll');
 clearAll.addEventListener('click', function () {
-    if (confirm('Do you really want to clear the list?')) {
+    if(localStorage.getItem('itemsJSON') == null){
+        alert ("The list is already empty");
+    }
+    else if (confirm('Do you really want to clear the list?')) {
         clearStore();
     }
 });
