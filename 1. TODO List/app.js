@@ -3,17 +3,22 @@ var arr = [];
 function submit() {
     let title = document.querySelector('.title').value;
     let desc = document.querySelector('.description').value;
-    if (localStorage.getItem('itemsJSON') == null) {
-        arr.push([title, desc]);
-        localStorage.setItem('itemsJSON', JSON.stringify(arr));
+    if (title !== "") {
+        if (localStorage.getItem('itemsJSON') == null) {
+            arr.push([title, desc]);
+            localStorage.setItem('itemsJSON', JSON.stringify(arr));
+        }
+        else {
+            itemsStr = localStorage.getItem('itemsJSON');
+            arr = JSON.parse(itemsStr);
+            arr.push([title, desc]);
+            localStorage.setItem('itemsJSON', JSON.stringify(arr));
+        }
+        update();
     }
     else {
-        itemsStr = localStorage.getItem('itemsJSON');
-        arr = JSON.parse(itemsStr);
-        arr.push([title, desc]);
-        localStorage.setItem('itemsJSON', JSON.stringify(arr));
+        alert("Empty title is not allowed");
     }
-    update();
 }
 
 function clearStore() {
