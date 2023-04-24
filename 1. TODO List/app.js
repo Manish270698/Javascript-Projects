@@ -39,7 +39,7 @@ function update() {
             str += `
             <tr>
                 <th scope="row">${index + 1}</th>
-                <td>${element[0]}</td>
+                <td><b>${element[0]}</b></td>
                 <td>${element[1]}</td>
                 <td><button type="button" class="btn btn-outline-danger" onclick="deleteMe(${index})">Delete</button></td>
             </tr>`
