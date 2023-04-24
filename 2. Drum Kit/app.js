@@ -23,4 +23,10 @@ document.addEventListener('keydown', function (event) {
 });
 
 let keys = document.querySelectorAll('.key');
-keys.forEach(key => key.addEventListener('transitionend', removeAnimation));
+
+keys.forEach(key => key.addEventListener('click', function (event) { //play sound for mouse click
+    playsound(key.getAttribute("data-key"));
+ })); // get value of data-key attribute for the key being clicked
+
+ //remove animation after the transition is completed
+ keys.forEach(key => key.addEventListener('transitionend', removeAnimation));
